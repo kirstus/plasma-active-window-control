@@ -13,6 +13,7 @@ Item {
     property alias cfg_widthFineTuning: widthFineTuning.value
 
     property alias cfg_showWindowTitle: showWindowTitle.checked
+    property alias cfg_showFullTitleWhenMaximized: showFullTitleWhenMaximized.checked
     property alias cfg_textType: textTypeCombo.currentIndex
     property alias cfg_fitText: fitTextCombo.currentIndex
     property alias cfg_tooltipTextType: tooltipTextTypeCombo.currentIndex
@@ -168,7 +169,11 @@ Item {
                     height: 10
                     Layout.columnSpan: 2
                 }
-
+                CheckBox {
+                    id: showFullTitleWhenMaximized
+                    text: i18n("Show window title instead of application name when window is maximized")
+                    Layout.columnSpan: 2
+                }
                 Label {
                     text: i18n('Text type:')
                     Layout.alignment: Qt.AlignRight

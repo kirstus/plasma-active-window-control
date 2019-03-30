@@ -43,6 +43,7 @@ Item {
     Layout.maximumHeight: Layout.preferredHeight
 
     property int textType: plasmoid.configuration.textType
+    property bool showFullTitleWhenMaximized: plasmoid.configuration.showFullTitleWhenMaximized
     property int fitText: plasmoid.configuration.fitText
     property int tooltipTextType: plasmoid.configuration.tooltipTextType
     property string tooltipText: ''
@@ -207,7 +208,10 @@ Item {
             windowTitleText.text = composeNoWindowText()
             iconItem.source = plasmoid.configuration.noWindowIcon
         } else {
-            windowTitleText.text = (textType === 1 ? actTask.AppName : null) || replaceTitle(actTask.display)
+            if(currentWindowMaximized && showFullTitleWhenMaximized)
+                windowTitleText.text = replaceTitle(actTask.display);
+            else
+                windowTitleText.text = (textType === 1 ? actTask.AppName : null) || replaceTitle(actTask.display);
             iconItem.source = actTask.decoration
         }
         updateTooltip()
